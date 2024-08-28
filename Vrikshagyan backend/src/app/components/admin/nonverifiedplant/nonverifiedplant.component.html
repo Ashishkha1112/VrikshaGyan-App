@@ -1,0 +1,66 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Non Verified Plants</h1>
+   
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">List of Non Verified Plants</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Plant Id</th>
+                            <th>Plant Name</th>
+                            <th>Category</th>
+                            <th>Uses</th>
+                            <th>Parts Used</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                          <th>Plant Id</th>
+                          <th>Plant Name</th>
+                          <th>Category</th>
+                          <th>Uses</th>
+                          <th>Parts Used</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr *ngFor="let plant of plants">
+                            <td>{{ plant.plantId }}</td>
+                            <td>
+                             <span style="color: black; font-weight: bold;"> Local Name : {{ plant.localName }},</span><br>
+                              <span style="font-size: 12px; color: black;"> Nepali Name : {{ plant.nepaliName}},</span><br>
+                              <span style="font-size: 12px; color: black">Tharu Name : {{plant.tharuName}},</span><br>
+                              <span style="font-size: 12px; color: black"> English Name : {{ plant.englishName }}</span><br>
+                              <span style="font-size: 12px; color: black; font-style: italic;">Scientific Name: {{ plant.scientificName }},</span><br>
+                            </td>
+                            <td>{{ plant.plantCategory }}</td>
+                            <td>
+                              <span style="font-size: 12px; color: black;"> Noraml Uses : {{ plant.normalUses }},</span><br>
+                              <span style="font-size: 12px; color: black;"> Medical Uses : {{ plant.medicalUses }},</span><br>
+                              <span style="font-size: 12px; color: black;"> Noraml Uses : {{ plant.traditionalUse }},</span><br>
+                          </td>
+                           <td>{{ plant.partUsed }}</td> 
+                           <td>{{ plant.status === 1 ? 'Verified' : 'Unverified' }}</td> 
+                           <td>
+                                <div class="row mb-2 ">
+                                <button class="btn btn-primary mb-2 mx-2" (click)="verifyPlant(plant.plantId)"><i class="fa fa-check"></i></button><button class="btn btn-danger mb-2  mx-2 "(click)="viewplant(plant.plantId)"><i class ="fa fa-eye"></i></button>
+                                </div>
+                           </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+  
+  </div>

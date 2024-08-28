@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="forgot_password_instruction">Enter your registered email to change your password</string> <string name="app_name">VrikshaGyan</string>
+    <string name="app_email">Enter Email</string>
+    <string name="app_password">Enter Password</string>
+    <string name="btn_login">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="new_here">New here? Signup</string>
+    <string name="todo">TODO\n</string>
+    <string name="text_signup">Signup</string>
+    <string name="first_name">First Name</string>
+    <string name="middle_name">Middle Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="province">"   "Province</string>
+    <string name="district"> "   " District</string>
+    <string name="municipality"> "   "Municipality</string>
+    <string name="ward_number">Ward Number</string>
+    <string name="tole">Tole</string>
+    <string name="occupation">Occupation</string>
+    <string name="already_have">Already have an account? Signin</string>
+    <string name="btn_continue">Continue</string>
+    <string name="login_with_password">Login with Password</string>
+    <string name="enter_otp">Enter your OTP</string>
+    <string name="blank" />
+    <string name="btn_confirm">Confirm</string>
+    <string name="didnt_get">Did not get OTP?</string>
+    <string name="new_password">Enter new password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="btn_changePassword">Change Password</string>
+    <string name="change_password_instruction">Enter your new password</string>
+    <string name="info">Info</string>
+    <string name="login">Login</string>
+    <string name="add">Add</string>
+    <string name="options">Options</string>
+    <string name="add_plant">Add Plants</string>
+    <string name="english_name">English Name</string>
+    <string name="tharu_name">Tharu Name</string>
+    <string name="category">Category</string>
+    <string name="part_used">Part Used</string>
+    <string name="taditional_uses">Traditional Uses</string>
+    <string name="plant_description">Plant Description</string>
+</resources>

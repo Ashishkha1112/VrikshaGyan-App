@@ -1,0 +1,70 @@
+.is-invalid {
+    border-color: red;
+  }
+  
+  .invalid-feedback {
+    color: red;
+  }
+  /* updateplant.component.css */
+.image-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows images to wrap to the next line if they overflow */
+  gap: 10px; /* Adjust the spacing between images as needed */
+}
+
+.image-wrapper {
+  flex: 0 1 auto; /* Allows the images to maintain their natural size */
+}
+
+.plant-image {
+  width: 50px; /* Adjust the width as needed */
+  height: 50px;
+  border: 1px solid #ff4d00; /* Optional: Add a border around the images */
+  border-radius: 4px; /* Optional: Add rounded corners */
+}
+
+/* Modal styles */
+.modal {
+  display: flex; /* Use flex to center the modal */
+  align-items: center;
+  justify-content: center;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px; /* Set a maximum width for the modal */
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer; /* Indicate that the element is clickable */
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-image {
+  width: 100%; /* Make the image responsive */
+  height: auto;
+}

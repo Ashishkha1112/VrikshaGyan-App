@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_background"
+    tools:context=".OTPVerifyActivity">
+
+    <LinearLayout
+        android:id="@+id/otpConfirmLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <ImageView style="@style/CustomLogo" />
+
+        <TextView
+            android:id="@+id/otpTitle"
+            style="@style/CustomTextViewHeader"
+            android:layout_marginBottom="20dp"
+
+            android:text="@string/enter_otp" />
+
+
+
+
+
+        <LinearLayout
+
+            android:id="@+id/otpLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/CustomTextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/otp1"
+                    style="@style/CustomTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:maxLength="6"
+                    android:gravity="center"
+                    android:textSize="18sp"
+
+
+                    android:inputType="text"
+
+                    tools:ignore="RtlSymmetry,TextContrastCheck,VisualLintTextFieldSize,SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/timerTextView"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/timer_initial_text"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnBackground"
+            android:gravity="center"
+
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/confirmOtp"
+           style="@style/CustomButton"
+            android:text="@string/btn_confirm"
+            tools:ignore="VisualLintButtonSize" />
+
+        <TextView
+            android:id="@+id/tvdidntget"
+
+            style="@style/CustomTextView"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="@string/didnt_get" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

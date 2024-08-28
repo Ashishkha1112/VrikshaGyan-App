@@ -1,0 +1,283 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">My Profile</h1>
+    <button (click)="toggleEdit()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+      {{ isEditable ? "Cancel" : "Update" }}
+    </button>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <div class="p-5">
+        <form class="user" [formGroup]="profileForm">
+            <div class="row">
+                <div *ngIf="errorMessage" class="alert alert-danger">
+                    {{ errorMessage }}
+                </div>
+            </div>
+          <div>
+            <div class="row">
+            <div class="col-12 col-sm-4 mb-3"><label for="userId" formControlName="userId">User ID : {{user.userId}}</label></div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label class="mx-2" for="profileImage">Profile Image</label>
+              <img  *ngIf="profileImageUrl" [src]="profileImageUrl" alt="Profile Image" style="max-width: 50px; max-height: 50px;" (click)="openModal(profileImageUrl.toString())" />
+          </div>
+        </div>
+        </div>
+        <div class="modal" *ngIf="isModalOpen">
+          <div class="modal-content">
+            <span class="close" (click)="closeModal()">&times;</span>
+            <img [src]="selectedImageUrl" alt="Plant Image" class="modal-image">
+          </div>
+        </div>
+          
+          
+          <div class="row">
+            <div class="col-12 col-sm-4 mb-3">
+              <label>First Name<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="FirstName" name="firstName" placeholder="First Name"
+                formControlName="firstName" required [ngClass]="{
+                  'is-invalid':
+                    profileForm.get('firstName')?.invalid &&
+                    profileForm.get('firstName')?.touched
+                }" />
+              <div
+                *ngIf="profileForm.get('firstName')?.errors?.['required'] && profileForm.get('firstName')?.touched"
+                class="text-danger">
+                First name is required
+              </div>
+              <div
+                *ngIf="profileForm.get('firstName')?.errors?.['minlength'] && profileForm.get('firstName')?.touched"
+                class="text-danger">
+                First name must be at least 3 characters long
+              </div>
+              <div
+                *ngIf="profileForm.get('firstName')?.errors?.['maxlength'] && profileForm.get('firstName')?.touched"
+                class="text-danger">
+                First name cannot be longer than 30 characters
+              </div>
+              <div *ngIf="profileForm.get('firstName')?.errors?.['serverError']" class="text-danger">
+                {{ profileForm.get('firstName')?.errors?.['serverError'] }}
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Middle Name</label>
+              <input type="text" class="form-control" id="MiddleName" name="middleName" placeholder="Middle Name"
+                formControlName="middleName" />
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Last Name<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="LastName" name="lastName" placeholder="Last Name"
+                formControlName="lastName" required [ngClass]="{
+                  'is-invalid':
+                    profileForm.get('lastName')?.invalid &&
+                    profileForm.get('lastName')?.touched
+                }" />
+              <div *ngIf="profileForm.get('lastName')?.errors?.['required'] && profileForm.get('lastName')?.touched"
+                class="text-danger">
+                Last name is required
+              </div>
+              <div
+                *ngIf="profileForm.get('lastName')?.errors?.['minlength'] && profileForm.get('lastName')?.touched"
+                class="text-danger">
+                Last name must be at least 3 characters long
+              </div>
+              <div
+                *ngIf="profileForm.get('lastName')?.errors?.['maxlength'] && profileForm.get('lastName')?.touched"
+                class="text-danger">
+                Last name cannot be longer than 30 characters
+              </div>
+              <div *ngIf="profileForm.get('lastName')?.errors?.['serverError']" class="text-danger">
+                {{ profileForm.get('lastName')?.errors?.['serverError'] }}
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Email<span class="text-danger">*</span></label>
+              <input type="email" class="form-control" id="Email" name="email" placeholder="Email Address"
+                formControlName="email" required [ngClass]="{
+                  'is-invalid':
+                    profileForm.get('email')?.invalid &&
+                    profileForm.get('email')?.touched
+                }" readonly />
+              <div *ngIf="profileForm.get('email')?.errors?.['required'] && profileForm.get('email')?.touched"
+                class="text-danger">
+                Email is required
+              </div>
+              <div *ngIf="profileForm.get('email')?.errors?.['email'] && profileForm.get('email')?.touched"
+                class="text-danger">
+                Please enter a valid email address
+              </div>
+              <div *ngIf="profileForm.get('email')?.errors?.['maxlength'] && profileForm.get('email')?.touched"
+                class="text-danger">
+                Email cannot be longer than 100 characters
+              </div>
+              <div *ngIf="profileForm.get('email')?.errors?.['serverError']" class="text-danger">
+                {{ profileForm.get('email')?.errors?.['serverError'] }}
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Phone<span class="text-danger">*</span></label>
+              <input type="phone" class="form-control" id="Phone" name="phone" placeholder="Phone Number"
+                formControlName="phone" required [ngClass]="{
+                  'is-invalid':
+                    profileForm.get('phone')?.invalid &&
+                    profileForm.get('phone')?.touched
+                }" readonly />
+              <div *ngIf="profileForm.get('phone')?.errors?.['required'] && profileForm.get('phone')?.touched"
+                class="text-danger">
+                Phone number is required
+              </div>
+              <div *ngIf="profileForm.get('phone')?.errors?.['pattern'] && profileForm.get('phone')?.touched"
+                class="text-danger">
+                Please enter a valid 10-digit phone number
+              </div>
+              <div *ngIf="profileForm.get('phone')?.errors?.['serverError']" class="text-danger">
+                {{ profileForm.get('phone')?.errors?.['serverError'] }}
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Occupation<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="Occupation" name="occupation" placeholder="Occupation"
+                formControlName="occupation" required [ngClass]="{
+                  'is-invalid':
+                    profileForm.get('occupation')?.invalid &&
+                    profileForm.get('occupation')?.touched
+                }" />
+              <div
+                *ngIf="profileForm.get('occupation')?.errors?.['required'] && profileForm.get('occupation')?.touched"
+                class="text-danger">
+                Occupation is required
+              </div>
+              <div
+                *ngIf="(profileForm.get('occupation')?.errors?.['minlength'] || profileForm.get('occupation')?.errors?.['maxlength']) && profileForm.get('occupation')?.touched"
+                class="text-danger">
+                Occupation must be between 2 and 50 characters
+              </div>
+              <div *ngIf="profileForm.get('occupation')?.errors?.['serverError']" class="text-danger">
+                {{ profileForm.get('occupation')?.errors?.['serverError'] }}
+              </div>
+            </div>
+
+
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Role<span class="text-danger">*</span></label>
+              <select class="form-control" name="role" formControlName="role"  [disabled]="true"  required readonly>
+                <option disabled selected>Open this select menu</option>
+                <option disabled selected *ngFor="let role of getroles" [value]="role">
+                  {{ role }}
+                </option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Status<span class="text-danger">*</span></label>
+              <select class="form-control" id="status" name="status" formControlName="status" required readonly >
+                <option disabled selected>Open this select menu</option>
+                <option disabled selected [value]="true">Active</option>
+                <option disabled selected [value]="false">Inactive</option>
+              </select>
+            </div>
+          </div>
+
+
+          <span><div class="row" formGroupName="address">
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Province<span class="text-danger">*</span></label>
+              <select class="form-control" id="Province" name="province" formControlName="province" required
+                [ngClass]="{'is-invalid': profileForm.get('address.province')?.invalid && profileForm.get('address.province')?.touched}">
+                <option disabled selected>Open this select menu</option>
+                <option *ngFor="let province of getprovincesdata" [value]="province.provinceId">
+                  {{ province.provinceName }}
+                </option>
+              </select>
+              <div
+                *ngIf="profileForm.get('address.province')?.errors?.['required'] && profileForm.get('address.province')?.touched"
+                class="text-danger">
+                Province selection is required
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>District<span class="text-danger">*</span></label>
+              <select class="form-control" id="District" name="district" formControlName="district" required
+                [ngClass]="{'is-invalid': profileForm.get('address.district')?.invalid && profileForm.get('address.district')?.touched
+                }">
+                <option disabled selected>Open this select menu</option>
+                <option *ngFor="let district of getdistrictdata" [value]="district.districtId">
+                  {{ district.districtName }}
+                </option>
+              </select>
+              <div
+                *ngIf="profileForm.get('address.district')?.errors?.['required'] && profileForm.get('address.district')?.touched"
+                class="text-danger">
+                District selection is required
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Municipality<span class="text-danger">*</span></label>
+              <select class="form-control" id="Municipality" name="municipality" formControlName="municipality"
+                required [ngClass]="{'is-invalid':profileForm.get('address.municipality')?.invalid && profileForm.get('address.municipality')?.touched
+                }">
+                <option disabled selected>Open this select menu</option>
+                <option *ngFor="let municipality of getmunicipalitydata" [value]="municipality.municipalityId">
+                  {{ municipality.municipalityName }}
+                </option>
+              </select>
+              <div
+                *ngIf="profileForm.get('address.municipality')?.errors?.['required'] && profileForm.get('address.municipality')?.touched"
+                class="text-danger">
+                Municipality selection is required
+              </div>
+              <div *ngIf="profileForm.get('address.municipality')?.errors?.['serverError']" class="text-danger">
+                {{ profileForm.get('address.municipality')?.errors?.['serverError'] }}
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Ward<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="WardNumber" name="wardNumber" placeholder="Ward Number"
+                formControlName="wardNumber" required [ngClass]="{
+                  'is-invalid':
+                    profileForm.get('address.wardNumber')?.invalid &&
+                    profileForm.get('address.wardNumber')?.touched
+                }" />
+              <div
+                *ngIf="profileForm.get('address.wardNumber')?.errors?.['required'] && profileForm.get('address.wardNumber')?.touched"
+                class="text-danger">
+                Ward number is required
+              </div>
+              <div
+                *ngIf="profileForm.get('address.wardNumber')?.errors?.['minlength'] && profileForm.get('address.wardNumber')?.touched"
+                class="text-danger">
+                Ward number must be at least 1 character long
+              </div>
+              <div
+                *ngIf="profileForm.get('address.wardNumber')?.errors?.['maxlength'] && profileForm.get('address.wardNumber')?.touched"
+                class="text-danger">
+                Ward number cannot be longer than 3 characters
+              </div>
+              <div
+                *ngIf="profileForm.get('address.wardNumber')?.errors?.['pattern'] && profileForm.get('address.wardNumber')?.touched"
+                class="text-danger">
+                Please enter a valid ward number
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Tole<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="Tole" name="tole" placeholder="Tole" formControlName="tole"
+                required [ngClass]="{
+                  'is-invalid':
+                    profileForm.get('address.tole')?.invalid &&
+                    profileForm.get('address.tole')?.touched
+                }" />
+              <div
+                *ngIf="profileForm.get('address.tole')?.errors?.['required'] && profileForm.get('address.tole')?.touched"
+                class="text-danger">
+                Tole is required
+              </div>
+            </div>
+           </div></span>
+          <button type="submit" class="btn btn-primary btn-user" (click)="onSubmit()">
+            Update User
+          </button>
+          <hr />
+        </form>
+        <hr />
+      </div>
+    </div>
+  </div>

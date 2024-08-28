@@ -1,0 +1,26 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+}
+
+.table-container {
+    max-height: 400px; /* Adjust this value as needed */
+    max-width: 100%; /* Adjust this value as needed */
+    overflow: auto;
+    border: 1px solid black; /* Optional: for better visibility of the scrollable area */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}

@@ -1,0 +1,154 @@
+
+<h1 class="h3 mb-0 text-gray-800">Register User</h1>
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <div class="p-5">
+      <form class="user" [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-4 mb-3">
+            <label>First Name<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="FirstName"
+                   name="firstName" placeholder="First Name" formControlName="firstName" required [ngClass]="{'is-invalid': addUserForm.get('firstName')?.invalid && addUserForm.get('firstName')?.touched}">
+            <div *ngIf="addUserForm.get('firstName')?.errors?.['required'] && addUserForm.get('firstName')?.touched"
+                 class="text-danger">First name is required</div>
+            <div *ngIf="addUserForm.get('firstName')?.errors?.['minlength'] && addUserForm.get('firstName')?.touched"
+                 class="text-danger">First name must be at least 3 characters long</div>
+            <div *ngIf="addUserForm.get('firstName')?.errors?.['maxlength'] && addUserForm.get('firstName')?.touched"
+                 class="text-danger">First name cannot be longer than 30 characters</div>
+            <div *ngIf="addUserForm.get('firstName')?.errors?.['serverError']" class="text-danger">
+              {{ addUserForm.get('firstName')?.errors?.['serverError'] }}
+            </div>
+          </div>
+          <div class="col-12 col-sm-4 mb-3">
+            <label>Middle Name</label>
+            <input type="text" class="form-control" id="MiddleName"
+                   name="middleName" placeholder="Middle Name" formControlName="middleName" [ngClass]="{'is-invalid': addUserForm.get('middleName')?.invalid && addUserForm.get('middleName')?.touched}">
+            <div *ngIf="addUserForm.get('middleName')?.errors?.['minlength'] && addUserForm.get('middleName')?.touched"
+                 class="text-danger">Middle name must be at least 3 characters long</div>
+            <div *ngIf="addUserForm.get('middleName')?.errors?.['maxlength'] && addUserForm.get('middleName')?.touched"
+                 class="text-danger">Middle name cannot be longer than 30 characters</div>
+          </div>
+          <div class="col-12 col-sm-4 mb-3">
+            <label>Last Name<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="LastName"
+                   name="lastName" placeholder="Last Name" formControlName="lastName" required [ngClass]="{'is-invalid': addUserForm.get('lastName')?.invalid && addUserForm.get('lastName')?.touched}">
+            <div *ngIf="addUserForm.get('lastName')?.errors?.['required'] && addUserForm.get('lastName')?.touched"
+                 class="text-danger">Last name is required</div>
+            <div *ngIf="addUserForm.get('lastName')?.errors?.['minlength'] && addUserForm.get('lastName')?.touched"
+                 class="text-danger">Last name must be at least 3 characters long</div>
+            <div *ngIf="addUserForm.get('lastName')?.errors?.['maxlength'] && addUserForm.get('lastName')?.touched"
+                 class="text-danger">Last name cannot be longer than 30 characters</div>
+          </div>
+    
+          <div class="col-12 col-sm-4 mb-3">
+            <label>Email<span class="text-danger">*</span></label>
+            <input type="email" class="form-control" id="Email"
+                   name="email" placeholder="Email Address" formControlName="email" required
+                   [ngClass]="{'is-invalid': addUserForm.get('email')?.invalid && addUserForm.get('email')?.touched}">
+            <div *ngIf="addUserForm.get('email')?.errors?.['required'] && addUserForm.get('email')?.touched"
+                 class="text-danger">Email is required</div>
+            <div *ngIf="addUserForm.get('email')?.errors?.['email'] && addUserForm.get('email')?.touched"
+                 class="text-danger">Please enter a valid email address</div>
+            <div *ngIf="addUserForm.get('email')?.errors?.['maxlength'] && addUserForm.get('email')?.touched"
+                 class="text-danger">Email cannot be longer than 100 characters</div>
+            <div *ngIf="addUserForm.get('email')?.errors?.['serverError']" class="text-danger">
+                {{ addUserForm.get('email')?.errors?.['serverError'] }}
+            </div>
+        </div>
+          <div class="col-12 col-sm-4 mb-3">
+            <label>Phone<span class="text-danger">*</span></label>
+            <input type="phone" class="form-control" id="Phone"
+                   name="phone" placeholder="Phone Number" formControlName="phone" required [ngClass]="{'is-invalid': addUserForm.get('phone')?.invalid && addUserForm.get('phone')?.touched}">
+            <div *ngIf="addUserForm.get('phone')?.errors?.['required'] && addUserForm.get('phone')?.touched"
+                 class="text-danger">Phone number is required</div>
+            <div *ngIf="addUserForm.get('phone')?.errors?.['pattern'] && addUserForm.get('phone')?.touched"
+                 class="text-danger">Please enter a valid 10-digit phone number</div>
+            <div *ngIf="addUserForm.get('phone')?.errors?.['serverError'] && addUserForm.get('phone')?.touched"
+            class="text-danger">{{ addUserForm.get('phone')?.errors?.['serverError'] }}</div>
+          </div>
+          
+          <div class="col-12 col-sm-4 mb-3">
+            <label>Password<span class="text-danger">*</span></label>
+            <input type="password" class="form-control" id="Password"
+                   name="password" placeholder="Password" formControlName="password" required [ngClass]="{'is-invalid': addUserForm.get('password')?.invalid && addUserForm.get('password')?.touched}">
+            <div *ngIf="addUserForm.get('password')?.errors?.['required'] && addUserForm.get('password')?.touched"
+                 class="text-danger">Password is required</div>
+          </div>
+          <div class="col-12 col-sm-4 mb-3">
+            <label>Occupation<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="Occupation"
+                   name="occupation" placeholder="Occupation" formControlName="occupation" required [ngClass]="{'is-invalid': addUserForm.get('occupation')?.invalid && addUserForm.get('occupation')?.touched}">
+            <div *ngIf="addUserForm.get('occupation')?.errors?.['required'] && addUserForm.get('occupation')?.touched"
+                 class="text-danger">Occupation is required</div>
+            <div *ngIf="(addUserForm.get('occupation')?.errors?.['minlength'] || addUserForm.get('occupation')?.errors?.['maxlength']) && addUserForm.get('occupation')?.touched"
+                 class="text-danger">Occupation must be between 2 and 50 characters</div>
+          </div>
+          <div class="col-12 col-sm-4 mb-3">
+            <label>Role<span class="text-danger">*</span></label>
+            <select class="form-control" name="role" formControlName="role" [ngClass]="{'is-invalid': addUserForm.get('role')?.invalid && addUserForm.get('role')?.touched}">
+              <option disabled selected>Open this select menu</option>
+              <option *ngFor="let role of getroles" [value]="role">{{ role }}</option>
+            </select>
+            <div *ngIf="addUserForm.get('role')?.errors?.['required'] && addUserForm.get('role')?.touched"
+                 class="text-danger">Role selection is required</div>
+          </div>
+        </div>
+
+        <!-- Address fields -->
+        <div class="row"  formGroupName="address">
+          <div class="col-12 col-sm-4 mb-3">
+            <label>Province<span class="text-danger">*</span></label>
+            <select class="form-control" id="Province" name="province" formControlName="province" required [ngClass]="{'is-invalid': addUserForm.get('address.province')?.invalid && addUserForm.get('address.province')?.touched}">
+              <option disabled selected>Open this select menu</option>
+              <option *ngFor="let province of getprovincesdata" [value]="province.provinceId">{{ province.provinceName }}</option>
+            </select>
+            <div *ngIf="addUserForm.get('address.province')?.errors?.['required'] && addUserForm.get('address.province')?.touched"
+                 class="text-danger">Province selection is required</div>
+          </div>
+          <div class="col-12 col-sm-4 mb-3">
+            <label>District<span class="text-danger">*</span></label>
+            <select class="form-control" id="District" name="district" formControlName="district" required [ngClass]="{'is-invalid': addUserForm.get('address.district')?.invalid && addUserForm.get('address.district')?.touched}">
+              <option disabled selected>Open this select menu</option>
+              <option *ngFor="let district of getdistrictdata" [value]="district.districtId">{{ district.districtName }}</option>
+            </select>
+            <div *ngIf="addUserForm.get('address.district')?.errors?.['required'] && addUserForm.get('address.district')?.touched"
+                 class="text-danger">District selection is required</div>
+          </div>
+          <div class="col-12 col-sm-4 mb-3">
+            <label>Municipality<span class="text-danger">*</span></label>
+            <select class="form-control" id="Municipality" name="municipality" formControlName="municipality" required [ngClass]="{'is-invalid': addUserForm.get('address.municipality')?.invalid && addUserForm.get('address.municipality')?.touched}">
+              <option disabled selected>Open this select menu</option>
+              <option *ngFor="let municipality of getmunicipalitydata" [value]="municipality.municipalityId">{{ municipality.municipalityName }}</option>
+            </select>
+            <div *ngIf="addUserForm.get('address.municipality')?.errors?.['required'] && addUserForm.get('address.municipality')?.touched"
+                 class="text-danger">Municipality selection is required</div>
+          </div>
+          <div class="col-12 col-sm-4 mb-3">
+            <label>Ward<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="Ward" name="wardNumber"
+                   placeholder="Ward" formControlName="wardNumber" required [ngClass]="{'is-invalid': addUserForm.get('address.wardNumber')?.invalid && addUserForm.get('address.wardNumber')?.touched}">
+            <div *ngIf="addUserForm.get('address.wardNumber')?.errors?.['required'] && addUserForm.get('address.wardNumber')?.touched"
+                 class="text-danger">Ward number is required</div>
+            <div *ngIf="addUserForm.get('address.wardNumber')?.errors?.['minlength'] && addUserForm.get('address.wardNumber')?.errors?.['maxlength'] && addUserForm.get('address.wardNumber')?.errors?.['pattern']"
+              class="text-danger">Please enter a valid ward number</div>
+          </div>
+          <div class="col-12 col-sm-4 mb-3">
+            <label>Tole<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="Tole" name="tole"
+                   placeholder="Tole" formControlName="tole" required [ngClass]="{'is-invalid': addUserForm.get('address.tole')?.invalid && addUserForm.get('address.tole')?.touched}">
+            <div *ngIf="addUserForm.get('address.tole')?.errors?.['required'] && addUserForm.get('address.tole')?.touched"
+                 class="text-danger">Tole is required</div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-user">Register Account</button>  
+        <hr>
+      </form>
+      <hr>
+    </div>
+  </div>
+</div>

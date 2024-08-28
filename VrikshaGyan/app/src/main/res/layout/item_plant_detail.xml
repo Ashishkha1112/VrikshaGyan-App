@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           tools:ignore="MissingConstraints">
+
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/imagesRecyclerView"
+               android:layout_width="match_parent"
+               android:layout_height="300dp"
+               android:layout_marginTop="8dp" />
+
+           <TextView
+               android:id="@+id/englishNameLabel"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="English Name"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"/>
+
+           <TextView
+               android:id="@+id/englishNameTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="16sp"
+               android:layout_marginTop="5dp"/>
+
+           <TextView
+               android:id="@+id/nepaliNameLabel"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Nepali Name"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"/>
+
+           <TextView
+               android:id="@+id/nepaliNameTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="16sp"
+               android:layout_marginTop="5dp"/>
+
+           <TextView
+               android:id="@+id/scientificNameLabel"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Scientific Name"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"/>
+
+           <TextView
+               android:id="@+id/scientificNameTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="16sp"
+               android:layout_marginTop="5dp"/>
+
+           <TextView
+               android:id="@+id/plantCategoryLabel"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Plant Category"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"/>
+
+           <TextView
+               android:id="@+id/plantCategoryTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="16sp"
+               android:layout_marginTop="5dp"/>
+
+           <TextView
+               android:id="@+id/partUsedLabel"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Part Used"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"/>
+
+           <TextView
+               android:id="@+id/partUsedTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="16sp"
+               android:layout_marginTop="5dp"/>
+
+           <TextView
+               android:id="@+id/tharuNameLabel"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Tharu Name"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"/>
+
+           <TextView
+               android:id="@+id/tharuNameTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="16sp"
+               android:layout_marginTop="5dp"/>
+
+           <TextView
+               android:id="@+id/localNameLabel"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Local Name"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"/>
+
+           <TextView
+               android:id="@+id/localNameTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="16sp"
+               android:layout_marginTop="5dp"/>
+
+           <TextView
+               android:id="@+id/normalUsesLabel"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Normal Uses"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"/>
+
+           <TextView
+               android:id="@+id/normalUsesTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="16sp"
+               android:layout_marginTop="5dp"/>
+
+           <TextView
+               android:id="@+id/traditionalUseLabel"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Traditional Use"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"/>
+
+           <TextView
+               android:id="@+id/traditionalUseTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="16sp"
+               android:layout_marginTop="5dp"/>
+
+           <TextView
+               android:id="@+id/medicalUsesLabel"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Medical Uses"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"/>
+
+           <TextView
+               android:id="@+id/medicalUsesTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="16sp"
+               android:layout_marginTop="5dp"/>
+
+           <TextView
+               android:id="@+id/preparationTypeLabel"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Preparation Type"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"/>
+
+           <TextView
+               android:id="@+id/preparationTypeTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="16sp"
+               android:layout_marginTop="5dp"/>
+
+
+
+           <TextView
+               android:id="@+id/heightLabel"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Height"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"/>
+
+           <TextView
+               android:id="@+id/heightTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="16sp"
+               android:layout_marginTop="5dp"/>
+           <TextView
+               android:id="@+id/descriptionLabel"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Description"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"/>
+
+           <TextView
+               android:id="@+id/descriptionTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="16sp"
+               android:layout_marginTop="5dp"
+               android:layout_marginBottom="10dp"/>
+
+       </LinearLayout>
+
+   </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

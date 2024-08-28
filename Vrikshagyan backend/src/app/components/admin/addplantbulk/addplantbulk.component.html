@@ -1,0 +1,26 @@
+<div *ngIf="errorMessage">{{ errorMessage }}</div>
+<form (submit)="onUpload($event)">
+    <label for="csvFile">CSV File:</label>
+    <input type="file" id="csvFile" (change)="onCSVFileSelected($event)" accept=".csv">
+  
+    <label for="imageFile">Image File (ZIP):</label>
+    <input type="file" id="imageFile" (change)="onImageFileSelected($event)" accept=".zip">
+  
+    <button type="submit">Upload</button>
+  </form>
+  
+  <div style="overflow: auto; max-width: 100%; max-height: 400px; border: 1px solid black;">
+    <table>
+      <thead>
+        <tr>
+          <th *ngFor="let header of tableData[0]">{{ header }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of tableData.slice(1)">
+          <td *ngFor="let cell of row">{{ cell }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

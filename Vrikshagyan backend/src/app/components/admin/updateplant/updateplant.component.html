@@ -1,0 +1,260 @@
+<h1 class="h3 mb-0 text-gray-800">Edit Plant Details</h1>
+    <button (click)="toggleEdit()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+      {{ isEditable ? 'Cancel' : 'Edit' }}
+    </button>
+<div class="row justify-content-center">
+ <div class="col-lg-12">
+     <div class="p-5">
+         <form class="plant" [formGroup]="updatePlantForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <!-- English Name -->
+                <div class="col-12 col-sm-4 mb-3">
+                  <label>English Name<span class="text-danger">*</span></label>
+                  <input type="text"
+                         class="form-control"
+                         id="EnglishName"
+                         name="englishName"
+                         placeholder="English Name"
+                         formControlName="englishName"
+                         [ngClass]="{'is-invalid': updatePlantForm.get('englishName')?.invalid && updatePlantForm.get('englishName')?.touched}">
+                  <div *ngIf="updatePlantForm.get('englishName')?.invalid && updatePlantForm.get('englishName')?.touched" class="invalid-feedback">
+                    <div *ngIf="updatePlantForm.get('englishName')?.errors?.['required']">English Name is required.</div>
+                    <div *ngIf="updatePlantForm.get('englishName')?.errors?.['serverError']">{{ updatePlantForm.get('englishName')?.errors?.['serverError'] }}</div>
+                  </div>
+                </div>
+      
+                <!-- Nepali Name -->
+                <div class="col-12 col-sm-4 mb-3">
+                  <label>Nepali Name<span class="text-danger">*</span></label>
+                  <input type="text"
+                         class="form-control"
+                         id="NepaliName"
+                         name="nepaliName"
+                         placeholder="Nepali Name"
+                         formControlName="nepaliName"
+                         [ngClass]="{'is-invalid': updatePlantForm.get('nepaliName')?.invalid && updatePlantForm.get('nepaliName')?.touched}">
+                  <div *ngIf="updatePlantForm.get('nepaliName')?.invalid && updatePlantForm.get('nepaliName')?.touched" class="invalid-feedback">
+                    <div *ngIf="updatePlantForm.get('nepaliName')?.errors?.['required']">Nepali Name is required.</div>
+                    <div *ngIf="updatePlantForm.get('nepaliName')?.errors?.['serverError']">{{ updatePlantForm.get('nepaliName')?.errors?.['serverError'] }}</div>
+                  </div>
+                </div>
+      
+                <!-- Tharu Name -->
+                <div class="col-12 col-sm-4 mb-3">
+                  <label>Tharu Name</label>
+                  <input type="text"
+                         class="form-control"
+                         id="TharuName"
+                         name="tharuName"
+                         placeholder="Tharu Name"
+                         formControlName="tharuName"
+                         [ngClass]="{'is-invalid': updatePlantForm.get('tharuName')?.invalid && updatePlantForm.get('tharuName')?.touched}">
+                  <div *ngIf="updatePlantForm.get('tharuName')?.invalid && updatePlantForm.get('tharuName')?.touched" class="invalid-feedback">
+                    <div *ngIf="updatePlantForm.get('tharuName')?.errors?.['required']">Tharu Name is required.</div>
+                    <div *ngIf="updatePlantForm.get('tharuName')?.errors?.['serverError']">{{ updatePlantForm.get('tharuName')?.errors?.['serverError'] }}</div>
+                  </div>
+                </div>
+      
+                <!-- Local Name -->
+                <div class="col-12 col-sm-4 mb-3">
+                  <label>Local Name</label>
+                  <input type="text"
+                         class="form-control"
+                         id="LocalName"
+                         name="localName"
+                         placeholder="Local Name"
+                         formControlName="localName"
+                         [ngClass]="{'is-invalid': updatePlantForm.get('localName')?.invalid && updatePlantForm.get('localName')?.touched}">
+                  <div *ngIf="updatePlantForm.get('localName')?.invalid && updatePlantForm.get('localName')?.touched" class="invalid-feedback">
+                    <div *ngIf="updatePlantForm.get('localName')?.errors?.['required']">Local Name is required.</div>
+                    <div *ngIf="updatePlantForm.get('localName')?.errors?.['serverError']">{{ updatePlantForm.get('localName')?.errors?.['serverError'] }}</div>
+                  </div>
+                </div>
+      
+                <!-- Scientific Name -->
+                <div class="col-12 col-sm-4 mb-3">
+                  <label>Scientific Name</label>
+                  <input type="text"
+                         class="form-control"
+                         id="ScientificName"
+                         name="scientificName"
+                         placeholder="Scientific Name"
+                         formControlName="scientificName"
+                         [ngClass]="{'is-invalid': updatePlantForm.get('scientificName')?.invalid && updatePlantForm.get('scientificName')?.touched}">
+                  <div *ngIf="updatePlantForm.get('scientificName')?.invalid && updatePlantForm.get('scientificName')?.touched" class="invalid-feedback">
+                    <div *ngIf="updatePlantForm.get('scientificName')?.errors?.['required']">Scientific Name is required.</div>
+                    <div *ngIf="updatePlantForm.get('scientificName')?.errors?.['serverError']">{{ updatePlantForm.get('scientificName')?.errors?.['serverError'] }}</div>
+                  </div>
+                </div>
+      
+                <!-- Plant Category -->
+                <div class="col-12 col-sm-4 mb-3">
+                  <label>Plant Category <span class="text-danger">*</span></label>
+                  <input type="text"
+                         class="form-control"
+                         id="PlantCategory"
+                         name="plantCategory"
+                         placeholder="Plant Category"
+                         formControlName="plantCategory"
+                         [ngClass]="{'is-invalid': updatePlantForm.get('plantCategory')?.invalid && updatePlantForm.get('plantCategory')?.touched}">
+                  <div *ngIf="updatePlantForm.get('plantCategory')?.invalid && updatePlantForm.get('plantCategory')?.touched" class="invalid-feedback">
+                    <div *ngIf="updatePlantForm.get('plantCategory')?.errors?.['required']">Plant Category is required.</div>
+                    <div *ngIf="updatePlantForm.get('plantCategory')?.errors?.['serverError']">{{ updatePlantForm.get('plantCategory')?.errors?.['serverError'] }}</div>
+                  </div>
+                </div>
+      
+                <!-- Part Used -->
+                <div class="col-12 col-sm-4 mb-3">
+                  <label>Part Used <span class="text-danger">*</span></label>
+                  <input type="text"
+                         class="form-control"
+                         id="PartUsed"
+                         name="partUsed"
+                         placeholder="Part Used"
+                         formControlName="partUsed"
+                         [ngClass]="{'is-invalid': updatePlantForm.get('partUsed')?.invalid && updatePlantForm.get('partUsed')?.touched}">
+                  <div *ngIf="updatePlantForm.get('partUsed')?.invalid && updatePlantForm.get('partUsed')?.touched" class="invalid-feedback">
+                    <div *ngIf="updatePlantForm.get('partUsed')?.errors?.['required']">Part Used is required.</div>
+                    <div *ngIf="updatePlantForm.get('partUsed')?.errors?.['serverError']">{{ updatePlantForm.get('partUsed')?.errors?.['serverError'] }}</div>
+                  </div>
+                </div>
+      
+                <!-- Normal Uses -->
+                <div class="col-12 col-sm-4 mb-3">
+                  <label>Normal Uses <span class="text-danger">*</span></label>
+                  <input type="text"
+                         class="form-control"
+                         id="NormalUses"
+                         name="normalUses"
+                         placeholder="Normal Uses"
+                         formControlName="normalUses"
+                         [ngClass]="{'is-invalid': updatePlantForm.get('normalUses')?.invalid && updatePlantForm.get('normalUses')?.touched}">
+                  <div *ngIf="updatePlantForm.get('normalUses')?.invalid && updatePlantForm.get('normalUses')?.touched" class="invalid-feedback">
+                    <div *ngIf="updatePlantForm.get('normalUses')?.errors?.['required']">Normal Uses is required.</div>
+                    <div *ngIf="updatePlantForm.get('normalUses')?.errors?.['serverError']">{{ updatePlantForm.get('normalUses')?.errors?.['serverError'] }}</div>
+                  </div>
+                </div>
+      
+                <!-- Traditional Use -->
+                <div class="col-12 col-sm-4 mb-3">
+                  <label>Traditional Use</label>
+                  <input type="text"
+                         class="form-control"
+                         id="TraditionalUse"
+                         name="traditionalUse"
+                         placeholder="Traditional Use"
+                         formControlName="traditionalUse"
+                         [ngClass]="{'is-invalid': updatePlantForm.get('traditionalUse')?.invalid && updatePlantForm.get('traditionalUse')?.touched}">
+                  <div *ngIf="updatePlantForm.get('traditionalUse')?.invalid && updatePlantForm.get('traditionalUse')?.touched" class="invalid-feedback">
+                    <div *ngIf="updatePlantForm.get('traditionalUse')?.errors?.['required']">Traditional Use is required.</div>
+                    <div *ngIf="updatePlantForm.get('traditionalUse')?.errors?.['serverError']">{{ updatePlantForm.get('traditionalUse')?.errors?.['serverError'] }}</div>
+                  </div>
+                </div>
+      
+                <!-- Medical Uses -->
+                <div class="col-12 col-sm-4 mb-3">
+                  <label>Medical Uses</label>
+                  <input type="text"
+                         class="form-control"
+                         id="MedicalUses"
+                         name="medicalUses"
+                         placeholder="Medical Uses"
+                         formControlName="medicalUses"
+                         [ngClass]="{'is-invalid': updatePlantForm.get('medicalUses')?.invalid && updatePlantForm.get('medicalUses')?.touched}">
+                  <div *ngIf="updatePlantForm.get('medicalUses')?.invalid && updatePlantForm.get('medicalUses')?.touched" class="invalid-feedback">
+                    <div *ngIf="updatePlantForm.get('medicalUses')?.errors?.['required']">Medical Uses is required.</div>
+                    <div *ngIf="updatePlantForm.get('medicalUses')?.errors?.['serverError']">{{ updatePlantForm.get('medicalUses')?.errors?.['serverError'] }}</div>
+                  </div>
+                </div>
+      
+                <!-- Preparation Type -->
+                <div class="col-12 col-sm-4 mb-3">
+                  <label>Preparation Type</label>
+                  <input type="text"
+                         class="form-control"
+                         id="PreparationType"
+                         name="preparationType"
+                         placeholder="Preparation Type"
+                         formControlName="preparationType"
+                         [ngClass]="{'is-invalid': updatePlantForm.get('preparationType')?.invalid && updatePlantForm.get('preparationType')?.touched}">
+                  <div *ngIf="updatePlantForm.get('preparationType')?.invalid && updatePlantForm.get('preparationType')?.touched" class="invalid-feedback">
+                    <div *ngIf="updatePlantForm.get('preparationType')?.errors?.['required']">Preparation Type is required.</div>
+                    <div *ngIf="updatePlantForm.get('preparationType')?.errors?.['serverError']">{{ updatePlantForm.get('preparationType')?.errors?.['serverError'] }}</div>
+                  </div>
+                </div>
+      
+                <!-- Plant Height -->
+                <div class="col-12 col-sm-4 mb-3">
+                  <label>Plant Height</label>
+                  <input type="text"
+                         class="form-control"
+                         id="plantHeight"
+                         name="plantHeight"
+                         placeholder="Plant Height"
+                         formControlName="plantHeight"
+                         [ngClass]="{'is-invalid': updatePlantForm.get('plantHeight')?.invalid && updatePlantForm.get('plantHeight')?.touched}">
+                  <div *ngIf="updatePlantForm.get('plantHeight')?.invalid && updatePlantForm.get('plantHeight')?.touched" class="invalid-feedback">
+                    <div *ngIf="updatePlantForm.get('plantHeight')?.errors?.['required']">Plant Height is required.</div>
+                    <div *ngIf="updatePlantForm.get('plantHeight')?.errors?.['serverError']">{{ updatePlantForm.get('plantHeight')?.errors?.['serverError'] }}</div>
+                  </div>
+                </div>
+      
+                <!-- Plant Description -->
+                <!-- <div class="col-12 col-sm-4 mb-3">
+                  <label>Plant Description <span class="text-danger">*</span></label>
+                  <input type="text"
+                         class="form-control"
+                         id="description"
+                         name="description"
+                         placeholder="Plant Description"
+                         formControlName="description"
+                         [ngClass]="{'is-invalid': updatePlantForm.get('description')?.invalid && updatePlantForm.get('description')?.touched}">
+                        <div *ngIf="updatePlantForm.get('description')?.invalid && updatePlantForm.get('description')?.touched" class="invalid-feedback">
+                          <div *ngIf="updatePlantForm.get('description')?.errors?.['required']">Plant Description is required.</div>
+                          <div *ngIf="updatePlantForm.get('description')?.errors?.['serverError']">{{ updatePlantForm.get('description')?.errors?.['serverError'] }}</div>
+                        </div>
+                </div> -->
+                <div class="col-12 col-sm-4 mb-3">
+                  <label>Plant Description <span class="text-danger">*</span></label>
+                  <textarea  class="form-control"
+                  id="description"
+                  name="description"
+                  placeholder="Plant Description"
+                  formControlName="description" 
+                  rows="4"
+                  cols="40"
+                  [ngClass]="{'is-invalid': updatePlantForm.get('description')?.invalid && updatePlantForm.get('description')?.touched}">
+                  </textarea>
+                  <div *ngIf="updatePlantForm.get('description')?.invalid && updatePlantForm.get('description')?.touched" class="invalid-feedback">
+                    <div *ngIf="updatePlantForm.get('description')?.errors?.['required']">Plant Description is required.</div>
+                    <div *ngIf="updatePlantForm.get('description')?.errors?.['serverError']">{{ updatePlantForm.get('description')?.errors?.['serverError'] }}</div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4 mb-3">
+                  <Label>Plant Image </Label>
+                   <div *ngIf="plantImageBase64.length" class="image-container ">
+                     <div *ngFor="let  base64Image of plantImageBase64" class="image-wrapper">
+                       <img [src]="'data:image/jpeg;base64,' + base64Image" alt="Plant Image" class="plant-image"  (click)="openModal(base64Image)">
+                     </div>
+                   </div>
+                </div>
+
+
+                <div class="modal" *ngIf="isModalOpen">
+                  <div class="modal-content">
+                    <span class="close" (click)="closeModal()">&times;</span>
+                    <img [src]="selectedImageUrl" alt="Plant Image" class="modal-image">
+                  </div>
+                </div>
+
+              </div>
+            <button type="submit" class="btn btn-primary btn-user">
+                Submit Plant Information
+            </button>
+             <!-- Error Message -->
+             <div class="text-danger mt-3" *ngIf="errorMessage">{{ errorMessage }}</div>
+        </form>
+         <hr>
+     </div>
+ </div>
+</div>

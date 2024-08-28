@@ -1,0 +1,308 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Edit User Details</h1>
+    <button (click)="toggleEdit()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+      {{ isEditable ? "Cancel" : "Edit" }}
+    </button>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <div class="p-5">
+        <div class="text-center">
+          <h1 class="h4 text-gray-900 mb-4">Edit a User Account!</h1>
+        </div>
+        <form class="user" [formGroup]="updateUserForm">
+          <div class="row" style="margin: 2px">
+            <div *ngIf="errorMessage" class="alert alert-danger">
+              {{ errorMessage }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-4 mb-3">
+              <label for="uId" formControlName="uID">User ID: {{ userId }}</label>
+            </div>
+            
+            <div class="col-12 col-sm-4 mb-3" *ngIf="updateUserForm.get('profileImage')?.value">
+              <label class="mx-2" for="profileImage">Profile Image</label> <img *ngIf="profileImageUrl" [src]="profileImageUrl" (click)="openModal(profileImageUrl)" alt="Profile Image" style="width: 50px; height: 50px;"/>
+            </div>
+          </div>
+          <div class="modal" *ngIf="isModalOpen">
+            <div class="modal-content">
+              <span class="close" (click)="closeModal()">&times;</span>
+              <img [src]="selectedImageUrl" alt="Plant Image" class="modal-image">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-12 col-sm-4 mb-3">
+              <label>First Name<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="FirstName" name="firstName" placeholder="First Name"
+                formControlName="firstName" required [ngClass]="{
+                  'is-invalid':
+                    updateUserForm.get('firstName')?.invalid &&
+                    updateUserForm.get('firstName')?.touched
+                }" />
+              <div
+                *ngIf="updateUserForm.get('firstName')?.errors?.['required'] && updateUserForm.get('firstName')?.touched"
+                class="text-danger">
+                First name is required
+              </div>
+              <div
+                *ngIf="updateUserForm.get('firstName')?.errors?.['minlength'] && updateUserForm.get('firstName')?.touched"
+                class="text-danger">
+                First name must be at least 3 characters long
+              </div>
+              <div
+                *ngIf="updateUserForm.get('firstName')?.errors?.['maxlength'] && updateUserForm.get('firstName')?.touched"
+                class="text-danger">
+                First name cannot be longer than 30 characters
+              </div>
+              <div *ngIf="updateUserForm.get('firstName')?.errors?.['serverError']" class="text-danger">
+                {{ updateUserForm.get('firstName')?.errors?.['serverError'] }}
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Middle Name</label>
+              <input type="text" class="form-control" id="MiddleName" name="middleName" placeholder="Middle Name"
+                formControlName="middleName" />
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Last Name<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="LastName" name="lastName" placeholder="Last Name"
+                formControlName="lastName" required [ngClass]="{
+                  'is-invalid':
+                    updateUserForm.get('lastName')?.invalid &&
+                    updateUserForm.get('lastName')?.touched
+                }" />
+              <div *ngIf="updateUserForm.get('lastName')?.errors?.['required'] && updateUserForm.get('lastName')?.touched"
+                class="text-danger">
+                Last name is required
+              </div>
+              <div
+                *ngIf="updateUserForm.get('lastName')?.errors?.['minlength'] && updateUserForm.get('lastName')?.touched"
+                class="text-danger">
+                Last name must be at least 3 characters long
+              </div>
+              <div
+                *ngIf="updateUserForm.get('lastName')?.errors?.['maxlength'] && updateUserForm.get('lastName')?.touched"
+                class="text-danger">
+                Last name cannot be longer than 30 characters
+              </div>
+              <div *ngIf="updateUserForm.get('lastName')?.errors?.['serverError']" class="text-danger">
+                {{ updateUserForm.get('lastName')?.errors?.['serverError'] }}
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Email<span class="text-danger">*</span></label>
+              <input type="email" class="form-control" id="Email" name="email" placeholder="Email Address"
+                formControlName="email" required [ngClass]="{
+                  'is-invalid':
+                    updateUserForm.get('email')?.invalid &&
+                    updateUserForm.get('email')?.touched
+                }" readonly />
+              <div *ngIf="updateUserForm.get('email')?.errors?.['required'] && updateUserForm.get('email')?.touched"
+                class="text-danger">
+                Email is required
+              </div>
+              <div *ngIf="updateUserForm.get('email')?.errors?.['email'] && updateUserForm.get('email')?.touched"
+                class="text-danger">
+                Please enter a valid email address
+              </div>
+              <div *ngIf="updateUserForm.get('email')?.errors?.['maxlength'] && updateUserForm.get('email')?.touched"
+                class="text-danger">
+                Email cannot be longer than 100 characters
+              </div>
+              <div *ngIf="updateUserForm.get('email')?.errors?.['serverError']" class="text-danger">
+                {{ updateUserForm.get('email')?.errors?.['serverError'] }}
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Phone<span class="text-danger">*</span></label>
+              <input type="phone" class="form-control" id="Phone" name="phone" placeholder="Phone Number"
+                formControlName="phone" required [ngClass]="{
+                  'is-invalid':
+                    updateUserForm.get('phone')?.invalid &&
+                    updateUserForm.get('phone')?.touched
+                }" readonly />
+              <div *ngIf="updateUserForm.get('phone')?.errors?.['required'] && updateUserForm.get('phone')?.touched"
+                class="text-danger">
+                Phone number is required
+              </div>
+              <div *ngIf="updateUserForm.get('phone')?.errors?.['pattern'] && updateUserForm.get('phone')?.touched"
+                class="text-danger">
+                Please enter a valid 10-digit phone number
+              </div>
+              <div *ngIf="updateUserForm.get('phone')?.errors?.['serverError']" class="text-danger">
+                {{ updateUserForm.get('phone')?.errors?.['serverError'] }}
+              </div>
+            </div>
+            <!-- <div class="col-12 col-sm-4 mb-3">
+              <label>Password</label>
+              <input type="password" class="form-control" id="Password" name="password" placeholder="Password"
+                formControlName="password" autocomplete="new-password" />
+            </div> -->
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Occupation<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="Occupation" name="occupation" placeholder="Occupation"
+                formControlName="occupation" required [ngClass]="{
+                  'is-invalid':
+                    updateUserForm.get('occupation')?.invalid &&
+                    updateUserForm.get('occupation')?.touched
+                }" />
+              <div
+                *ngIf="updateUserForm.get('occupation')?.errors?.['required'] && updateUserForm.get('occupation')?.touched"
+                class="text-danger">
+                Occupation is required
+              </div>
+              <div
+                *ngIf="(updateUserForm.get('occupation')?.errors?.['minlength'] || updateUserForm.get('occupation')?.errors?.['maxlength']) && updateUserForm.get('occupation')?.touched"
+                class="text-danger">
+                Occupation must be between 2 and 50 characters
+              </div>
+              <div *ngIf="updateUserForm.get('occupation')?.errors?.['serverError']" class="text-danger">
+                {{ updateUserForm.get('occupation')?.errors?.['serverError'] }}
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Role<span class="text-danger">*</span></label>
+              <select class="form-control" name="role" formControlName="role" required [ngClass]="{
+                  'is-invalid':
+                    updateUserForm.get('role')?.invalid &&
+                    updateUserForm.get('role')?.touched
+                }">
+                <option disabled selected>Open this select menu</option>
+                <option *ngFor="let role of getroles" [value]="role">
+                  {{ role }}
+                </option>
+              </select>
+              <div *ngIf="updateUserForm.get('role')?.errors?.['required'] && updateUserForm.get('role')?.touched"
+                class="text-danger">
+                Role selection is required
+              </div>
+              <div *ngIf="updateUserForm.get('role')?.errors?.['serverError']" class="text-danger">
+                {{ updateUserForm.get('role')?.errors?.['serverError'] }}
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Status<span class="text-danger">*</span></label>
+              <select class="form-control" id="status" name="status" formControlName="status" required [ngClass]="{
+                  'is-invalid':
+                    updateUserForm.get('status')?.invalid &&
+                    updateUserForm.get('status')?.touched
+                }">
+                <option disabled selected>Open this select menu</option>
+                <option [value]="true">Active</option>
+                <option [value]="false">Inactive</option>
+              </select>
+              <div *ngIf="updateUserForm.get('status')?.errors?.['required'] && updateUserForm.get('status')?.touched"
+                class="text-danger">
+                Status selection is required
+              </div>
+              <div *ngIf="updateUserForm.get('status')?.errors?.['serverError']" class="text-danger">
+                {{ updateUserForm.get('status')?.errors?.['serverError'] }}
+              </div>
+            </div>
+          </div>
+          <span><div class="row" formGroupName="address">
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Province<span class="text-danger">*</span></label>
+              <select class="form-control" id="Province" name="province" formControlName="province" required
+                [ngClass]="{'is-invalid': updateUserForm.get('address.province')?.invalid && updateUserForm.get('address.province')?.touched}">
+                <option disabled selected>Open this select menu</option>
+                <option *ngFor="let province of getprovincesdata" [value]="province.provinceId">
+                  {{ province.provinceName }}
+                </option>
+              </select>
+              <div
+                *ngIf="updateUserForm.get('address.province')?.errors?.['required'] && updateUserForm.get('address.province')?.touched"
+                class="text-danger">
+                Province selection is required
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>District<span class="text-danger">*</span></label>
+              <select class="form-control" id="District" name="district" formControlName="district" required
+                [ngClass]="{'is-invalid': updateUserForm.get('address.district')?.invalid && updateUserForm.get('address.district')?.touched
+                }">
+                <option disabled selected>Open this select menu</option>
+                <option *ngFor="let district of getdistrictdata" [value]="district.districtId">
+                  {{ district.districtName }}
+                </option>
+              </select>
+              <div
+                *ngIf="updateUserForm.get('address.district')?.errors?.['required'] && updateUserForm.get('address.district')?.touched"
+                class="text-danger">
+                District selection is required
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Municipality<span class="text-danger">*</span></label>
+              <select class="form-control" id="Municipality" name="municipality" formControlName="municipality"
+                required [ngClass]="{'is-invalid':updateUserForm.get('address.municipality')?.invalid && updateUserForm.get('address.municipality')?.touched
+                }">
+                <option disabled selected>Open this select menu</option>
+                <option *ngFor="let municipality of getmunicipalitydata" [value]="municipality.municipalityId">
+                  {{ municipality.municipalityName }}
+                </option>
+              </select>
+              <div
+                *ngIf="updateUserForm.get('address.municipality')?.errors?.['required'] && updateUserForm.get('address.municipality')?.touched"
+                class="text-danger">
+                Municipality selection is required
+              </div>
+              <div *ngIf="updateUserForm.get('address.municipality')?.errors?.['serverError']" class="text-danger">
+                {{ updateUserForm.get('address.municipality')?.errors?.['serverError'] }}
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Ward<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="WardNumber" name="wardNumber" placeholder="Ward Number"
+                formControlName="wardNumber" required [ngClass]="{
+                  'is-invalid':
+                    updateUserForm.get('address.wardNumber')?.invalid &&
+                    updateUserForm.get('address.wardNumber')?.touched
+                }" />
+              <div
+                *ngIf="updateUserForm.get('address.wardNumber')?.errors?.['required'] && updateUserForm.get('address.wardNumber')?.touched"
+                class="text-danger">
+                Ward number is required
+              </div>
+              <div
+                *ngIf="updateUserForm.get('address.wardNumber')?.errors?.['minlength'] && updateUserForm.get('address.wardNumber')?.touched"
+                class="text-danger">
+                Ward number must be at least 1 character long
+              </div>
+              <div
+                *ngIf="updateUserForm.get('address.wardNumber')?.errors?.['maxlength'] && updateUserForm.get('address.wardNumber')?.touched"
+                class="text-danger">
+                Ward number cannot be longer than 3 characters
+              </div>
+              <div
+                *ngIf="updateUserForm.get('address.wardNumber')?.errors?.['pattern'] && updateUserForm.get('address.wardNumber')?.touched"
+                class="text-danger">
+                Please enter a valid ward number
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 mb-3">
+              <label>Tole<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="Tole" name="tole" placeholder="Tole" formControlName="tole"
+                required [ngClass]="{
+                  'is-invalid':
+                    updateUserForm.get('address.tole')?.invalid &&
+                    updateUserForm.get('address.tole')?.touched
+                }" />
+              <div
+                *ngIf="updateUserForm.get('address.tole')?.errors?.['required'] && updateUserForm.get('address.tole')?.touched"
+                class="text-danger">
+                Tole is required
+              </div>
+            </div>
+           </div></span>
+          <button type="submit" class="btn btn-primary btn-user" (click)="onSubmit()">
+            Update User
+          </button>
+          <hr />
+        </form>
+        <hr />
+      </div>
+    </div>
+  </div>
